@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier.Api", "NTier.Api\NTier.Api.csproj", "{0F8EAAEB-32F1-481B-8AD3-B8F188BF2707}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier.Data", "NTier.Data\NTier.Data.csproj", "{F312FEA1-28B3-43A0-8BF5-FEC849626AB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier.Application", "NTier.Application\NTier.Application.csproj", "{0B30F5FA-03EA-4586-B0BC-6CED545DA377}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F8EAAEB-32F1-481B-8AD3-B8F188BF2707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F8EAAEB-32F1-481B-8AD3-B8F188BF2707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F8EAAEB-32F1-481B-8AD3-B8F188BF2707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F8EAAEB-32F1-481B-8AD3-B8F188BF2707}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F312FEA1-28B3-43A0-8BF5-FEC849626AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F312FEA1-28B3-43A0-8BF5-FEC849626AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F312FEA1-28B3-43A0-8BF5-FEC849626AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F312FEA1-28B3-43A0-8BF5-FEC849626AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B30F5FA-03EA-4586-B0BC-6CED545DA377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B30F5FA-03EA-4586-B0BC-6CED545DA377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B30F5FA-03EA-4586-B0BC-6CED545DA377}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B30F5FA-03EA-4586-B0BC-6CED545DA377}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E687A422-7B76-4AF0-82FB-16F29586BC94}
+	EndGlobalSection
+EndGlobal
