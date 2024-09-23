@@ -1,7 +1,7 @@
 ﻿using NTier.Data.Entities;
-using NTier.Data.Interfaces;
+using NTier.Data.Repositories;
 
-namespace NTier.Application;
+namespace NTier.Application.Services;
 
 public class UserService : IUserService
 {

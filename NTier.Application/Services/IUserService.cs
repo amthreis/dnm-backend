@@ -1,6 +1,6 @@
 ﻿using NTier.Data.Entities;
 
-namespace NTier.Application;
+namespace NTier.Application.Services;
 
 public interface IUserService
 {

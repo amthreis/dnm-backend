@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NTier.Application.Services;
 using NTier.Data;
 
 namespace NTier.Application;
@@ -16,4 +18,5 @@ public static class DI
 
         return services;
     }
+
 }

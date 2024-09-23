@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NTier.Data.Entities;
 
-namespace NTier.Data.Interfaces;
+namespace NTier.Data.Repositories;
 
 public class UserRepository : IUserRepository
 {

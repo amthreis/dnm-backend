@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using NTier.Application;
+using NTier.Application.Services;
 
 namespace NTier.Api.Controllers;
 

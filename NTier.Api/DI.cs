@@ -1,4 +1,6 @@
-﻿using NTier.Application;
+﻿using Microsoft.EntityFrameworkCore;
+using NTier.Application;
+using NTier.Data;
 
 namespace NTier.Api;
 
@@ -15,5 +17,20 @@ public static class DI
         services.AddApplication(config);
 
         return services;
+    }
+
+    public static void ApplyMigrations(this IApplicationBuilder app)
+    {
+        using IServiceScope scope = app.ApplicationServices.CreateScope();
+        using AppDbContext ctx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        var pending = ctx.Database.GetPendingMigrations();
+
+        ctx.Database.Migrate();
+
+        if (pending.Count() > 0)
+        {
+            ctx.DevSeed();
+        }
     }
 }
