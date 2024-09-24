@@ -1,5 +1,9 @@
-﻿namespace NTier.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using NetTopologySuite.Features;
 
+namespace NTier.Data.Entities;
+
+[Index(nameof(Email), IsUnique = true)]
 public class User
 {
     public int Id { get; set; }

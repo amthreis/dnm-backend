@@ -10,7 +10,13 @@ public static class DI
         this IServiceCollection services,
         IConfiguration config)
     {
-        services.AddControllers();
+        services
+            .AddControllers()
+            .AddJsonOptions(options => {
+                options.JsonSerializerOptions.Converters.Add(
+                    new NetTopologySuite.IO.Converters.GeoJsonConverterFactory());
+            });
+
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
 

@@ -1,7 +1,7 @@
 ﻿using NTier.Application.Patients.Contracts;
 using NTier.Application.Users.Dtos;
 using NTier.Data.Entities;
-using NTier.Data.Repositories;
+using NTier.Data.Repositories.Interfaces;
 
 namespace NTier.Application.Patients;
 

@@ -1,7 +1,7 @@
 ﻿using NTier.Application.Users.Contracts;
 using NTier.Application.Users.Dtos;
 using NTier.Data.Entities;
-using NTier.Data.Repositories;
+using NTier.Data.Repositories.Interfaces;
 
 namespace NTier.Application.Users;
 
@@ -23,7 +23,7 @@ public class UserService : IUserService
             PublicId = Guid.NewGuid(),
         });
 
-        return new UserDto(user);
+        return UserDto.FromEntity(user);
     }
 
     public async Task<List<UserDto>> GetAllAsync()
@@ -31,7 +31,7 @@ public class UserService : IUserService
         var all = await _userRepo.GetAllAsync();
 
         return all
-            .Select(u => new UserDto(u))
+            .Select(u => UserDto.FromEntity(u))
             .ToList();
     }
 }

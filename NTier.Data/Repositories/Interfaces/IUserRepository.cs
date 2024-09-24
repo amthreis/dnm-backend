@@ -1,6 +1,6 @@
 ﻿using NTier.Data.Entities;
 
-namespace NTier.Data.Repositories;
+namespace NTier.Data.Repositories.Interfaces;
 
 public interface IUserRepository
 {

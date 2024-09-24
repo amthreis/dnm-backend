@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NTier.Data.Entities;
+using NTier.Data.Repositories.Interfaces;
 
 namespace NTier.Data.Repositories;
 
