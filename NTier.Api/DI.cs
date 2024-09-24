@@ -19,7 +19,9 @@ public static class DI
         return services;
     }
 
-    public static void ApplyMigrations(this IApplicationBuilder app)
+    public static void ApplyMigrations(
+        this IApplicationBuilder app,
+        bool dev)
     {
         using IServiceScope scope = app.ApplicationServices.CreateScope();
         using AppDbContext ctx = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -30,7 +32,10 @@ public static class DI
 
         if (pending.Count() > 0)
         {
-            ctx.DevSeed();
+            ctx.Seed();
+
+            if (dev)
+                ctx.DevSeed();
         }
     }
 }

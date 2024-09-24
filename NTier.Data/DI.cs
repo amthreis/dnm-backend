@@ -20,22 +20,8 @@ public static class DI
         });
 
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IPatientRepository, PatientRepository>();
 
         return services;
-    }
-
-    public static void DevSeed(this AppDbContext ctx)
-    {
-        Debug.WriteLine("Seeding...");
-
-        var gf = NetTopologySuite.NtsGeometryServices.Instance.CreateGeometryFactory(4326);
-
-        ctx.Users.Add(new User
-        {
-            Name = "Leila",
-            Email = "leila@m.com",
-        });
-
-        ctx.SaveChanges();
     }
 }

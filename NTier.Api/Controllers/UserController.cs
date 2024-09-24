@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using NTier.Application.Services;
+using NTier.Application.Users;
+using NTier.Application.Users.Contracts;
 
 namespace NTier.Api.Controllers;
 
@@ -22,5 +23,11 @@ public class UserController : ControllerBase
     public async Task<IActionResult> ListUsers()
     {
         return Ok(await _userService.GetAllAsync());
+    }
+
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateUser(CreateUserRequest request)
+    {
+        return Ok(await _userService.AddAsync(request));
     }
 }

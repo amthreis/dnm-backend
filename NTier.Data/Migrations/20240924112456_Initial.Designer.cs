@@ -12,7 +12,7 @@ using NTier.Data;
 namespace NTier.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240923201736_Initial")]
+    [Migration("20240924112456_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -38,10 +38,6 @@ namespace NTier.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
