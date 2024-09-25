@@ -26,18 +26,22 @@ public class ClinicRepository : IClinicRepository
 
     public async Task<List<Clinic>> GetAllAsync()
     {
-        return await _dbContext.Clinics.ToListAsync();
+        return await _dbContext.Clinics
+            .Include(c => c.User)
+            .ToListAsync();
     }
 
     public async Task<Clinic?> GetByJuridicalPersonId(string jpId)
     {
         return await _dbContext.Clinics
+            .Include(c => c.User)
             .SingleOrDefaultAsync(u => u.JuridicalPersonId == jpId);
     }
 
     public async Task<Clinic?> GetByUserPublicIdAsync(Guid clinicPublicId)
     {
         return await _dbContext.Clinics
+            .Include(c => c.User)
             .SingleOrDefaultAsync(u => u.User.PublicId == clinicPublicId);
     }
 
@@ -45,6 +49,7 @@ public class ClinicRepository : IClinicRepository
     {
         var clinics = await _dbContext.Clinics
             .AsNoTracking()
+            .Include(c => c.User)
             .OrderBy(c => c.Location.Distance(pt))
             .Skip(pageSize * (page - 1))
             .Take(pageSize)

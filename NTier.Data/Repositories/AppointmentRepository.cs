@@ -25,6 +25,7 @@ public class AppointmentRepository : IAppointmentRepository
     {
         return await _dbContext.Appointments
             .Include(a => a.Clinic)
+                .ThenInclude(c => c.User)
             .Include(a => a.Doctor)
                 .ThenInclude(d => d.User)
             .Include (a => a.Patient)

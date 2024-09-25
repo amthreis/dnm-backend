@@ -1,5 +1,4 @@
 ﻿using NTier.Data.Entities;
-using NTier.Data.Migrations;
 using NTier.Data.Repositories;
 using System.Diagnostics;
 using System.Numerics;

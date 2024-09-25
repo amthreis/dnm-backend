@@ -10,9 +10,6 @@ public class Clinic
     [ForeignKey("Id")]
     public User User { get; set; } = default!;
 
-    public int Id { get; set; }
-    public Guid PublicId { get; set; } = Guid.NewGuid();
-
     public string JuridicalPersonId { get; set; } = default!;
 
     public string Name { get; set; } = default!;
