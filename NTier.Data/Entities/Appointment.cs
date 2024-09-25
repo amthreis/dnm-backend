@@ -2,10 +2,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
-using NTier.Data.Entities;
 
-namespace DoctorsNearMe;
+namespace NTier.Data.Entities;
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum AppointmentReviewScore
 {
     Negative,
@@ -13,6 +13,7 @@ public enum AppointmentReviewScore
     Positive
 }
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum AppointmentState
 {
     BeforeConfirmation,
@@ -27,7 +28,7 @@ public class Appointment
     public int Id { get; set; }
     public Guid PublicId { get; set; } = Guid.NewGuid();
 
-    //public Clinic Clinic { get; set; }
+    public Clinic Clinic { get; set; } = default!;
 
     [DeleteBehavior(DeleteBehavior.NoAction)]
     public Doctor Doctor { get; set; } = default!;
@@ -35,19 +36,19 @@ public class Appointment
     [DeleteBehavior(DeleteBehavior.NoAction)]
     public Patient Patient { get; set; } = default!;
 
+    public string PatientCode { get; set; } = "0000";
+
     public DateTime CreatedAt { get; set; }
-    public DateTime? ConfirmedAt { get; set; }
-    public DateTime? StartedAt { get; set; }
+    public DateTime? AttendedAt { get; set; }
+    public DateTime? StartsAt { get; set; }
     public DateTime? CancelledAt { get; set; }
     public DateTime? EndedAt { get; set; }
     public DateTime? ReviewedAt { get; set; }
 
     [Column(TypeName = "TEXT")]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
     public AppointmentState State { get; set; } = AppointmentState.BeforeConfirmation;
 
     [Column(TypeName = "TEXT")]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
     public AppointmentReviewScore ReviewScore { get; set; } = AppointmentReviewScore.Neutral;
 
     [Length(2, 450)]

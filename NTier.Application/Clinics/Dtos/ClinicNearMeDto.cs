@@ -1,11 +1,11 @@
 ﻿using NetTopologySuite.Geometries;
+using NTier.Application.Users.Dtos;
 using NTier.Data.Entities;
 
 namespace NTier.Application.Clinics.Dtos;
 
 public record ClinicNearMeDto(
-    int Id,
-    Guid PublicId,
+    UserDto User,
     string Name,
     double Distance)
 {
@@ -13,8 +13,7 @@ public record ClinicNearMeDto(
     public static ClinicNearMeDto FromEntity(Clinic clinic, Point from)
     {
         return new ClinicNearMeDto(
-            clinic.Id,
-            clinic.PublicId,
+            UserDto.FromEntity(clinic.User),
             clinic.Name,
             clinic.GetMetersTo(from) / 1000);
     }

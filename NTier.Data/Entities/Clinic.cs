@@ -1,11 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NetTopologySuite.Geometries;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NTier.Data.Entities;
 
 [Index(nameof(JuridicalPersonId), IsUnique = true)]
 public class Clinic
 {
+    [ForeignKey("Id")]
+    public User User { get; set; } = default!;
+
     public int Id { get; set; }
     public Guid PublicId { get; set; } = Guid.NewGuid();
 

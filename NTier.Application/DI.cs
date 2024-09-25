@@ -19,6 +19,7 @@ public static class DI
         services.AddScoped<IPatientService, PatientService>();
         services.AddScoped<IDoctorService, DoctorService>();
         services.AddScoped<IClinicService, ClinicService>();
+        services.AddScoped<IAppointmentService, AppointmentService>();
 
         services.AddData(config);
 

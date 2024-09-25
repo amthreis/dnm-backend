@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NTier.Data.Entities;
 using NTier.Data.Repositories.Interfaces;
+using System.Text;
 
 namespace NTier.Data.Repositories;
 
@@ -35,5 +36,18 @@ public class PatientRepository : IPatientRepository
         return await _dbContext.Patients
             .Include(p => p.User)
             .SingleOrDefaultAsync(u => u.User.PublicId == userPublicId);
+    }
+
+    public static string GenerateRandomCode()
+    {
+        Random random = new Random();
+        char[] digits = new char[4];
+
+        for (int i = 0; i < digits.Length; i++)
+        {
+            digits[i] = random.Next(0, 10).ToString()[0];
+        }
+
+        return new StringBuilder().Append(digits).ToString();
     }
 }

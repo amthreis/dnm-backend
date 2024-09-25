@@ -33,6 +33,7 @@ public class PatientService : IPatientService
         var newPatient = await _patientRepo.AddAsync(new Patient
         {
             User = user,
+            Code = IPatientRepository.GenerateRandomCode(),
         });
 
         return PatientDto.FromEntity(newPatient);
@@ -46,4 +47,5 @@ public class PatientService : IPatientService
             .Select(p => PatientDto.FromEntity(p))
             .ToList();
     }
+
 }

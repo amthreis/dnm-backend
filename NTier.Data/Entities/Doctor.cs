@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace NTier.Data.Entities;
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum DoctorSpecialty
 {
     Dermatology,
@@ -16,6 +17,6 @@ public class Doctor
     public User User { get; set; } = default!;
 
     [Column(TypeName = "TEXT")]
-    [JsonConverter(typeof(JsonStringEnumConverter))]
+    //[JsonConverter(typeof(JsonStringEnumConverter))]
     public List<DoctorSpecialty> Specialties { get; set; } = new();
 }

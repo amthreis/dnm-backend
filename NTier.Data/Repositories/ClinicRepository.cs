@@ -35,10 +35,10 @@ public class ClinicRepository : IClinicRepository
             .SingleOrDefaultAsync(u => u.JuridicalPersonId == jpId);
     }
 
-    public async Task<Clinic?> GetByPublicIdAsync(Guid clinicPublicId)
+    public async Task<Clinic?> GetByUserPublicIdAsync(Guid clinicPublicId)
     {
         return await _dbContext.Clinics
-            .SingleOrDefaultAsync(u => u.PublicId == clinicPublicId);
+            .SingleOrDefaultAsync(u => u.User.PublicId == clinicPublicId);
     }
 
     public async Task<List<Clinic>> GetNearCoord(Point pt, int pageSize, int page)

@@ -11,7 +11,7 @@ public record PublicClinicNearMeDto(
     public static PublicClinicNearMeDto FromEntity(Clinic clinic, Point from)
     {
         return new PublicClinicNearMeDto(
-            clinic.PublicId,
+            clinic.User.PublicId,
             clinic.Name,
             clinic.GetMetersTo(from) / 1000);
     }

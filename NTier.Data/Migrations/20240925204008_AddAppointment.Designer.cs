@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NTier.Data;
 using NetTopologySuite.Geometries;
@@ -12,9 +13,11 @@ using NetTopologySuite.Geometries;
 namespace NTier.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240925204008_AddAppointment")]
+    partial class AddAppointment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,10 +51,6 @@ namespace NTier.Data.Migrations
 
                     b.Property<DateTime?>("EndedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("PatientCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
@@ -90,7 +89,10 @@ namespace NTier.Data.Migrations
             modelBuilder.Entity("NTier.Data.Entities.Clinic", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("JuridicalPersonId")
                         .IsRequired()
@@ -138,10 +140,6 @@ namespace NTier.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -200,17 +198,6 @@ namespace NTier.Data.Migrations
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("NTier.Data.Entities.Clinic", b =>
-                {
-                    b.HasOne("NTier.Data.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("NTier.Data.Entities.Doctor", b =>
